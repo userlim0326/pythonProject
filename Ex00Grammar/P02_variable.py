@@ -81,5 +81,10 @@ print(bool(None))
 print(bool(0))
 print(bool(''))
 
-
+print("{0:=^20}".format('4. 문자형 :: str, chr'))
+c = chr(48); print(type(c))
+print(type(chr(97)))
+print(ord('A'))
+print("'A' == chr(65):", 'A' == chr(65))
+print("'A' == ord('A'):", 'A' == ord('A'))
 
