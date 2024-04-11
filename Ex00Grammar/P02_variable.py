@@ -31,10 +31,10 @@ del a, b
 # print("del 이후", a, b) # NameError 발생
 
 print("{0:=^20}".format('변수의 종류'))
-# 1. null :: NoneType
+print("{0:=^20}".format('1. null :: NoneType'))
 print(type(None))
 
-# 2. 숫자형 :: int, float, complex
+print("{0:=^20}".format('2. 숫자형 :: int, float, complex'))
 a = 10; print(a); print(type(a))
 a = 12.345; print(a); print(type(a), end="\t")
 a = 0b1010; print(a); print(type(a), end="\t")
@@ -67,7 +67,7 @@ a = 123456789123456789; print(type(a)) # python 3버전부터는 long이  int로
 a= random.random()* 45; print(int(a))
 a = random.uniform(1, 100); print(int(a))
 
-# 2. 논리형 :: bool
+print("{0:=^20}".format('3. 논리형 :: bool'))
 print(type(10>5))
 print((1>2) or (2<5))
 print(type(False))
