@@ -43,19 +43,19 @@ from bs4 import BeautifulSoup
 from urllib.request import urlopen
 html = urlopen('https://news.naver.com/section/105')
 bs = BeautifulSoup(html.read(), 'html.parser')
-# titles = bs.select('.ct_scroll_wrapper>div>div>ul>li>a')
-# titles = bs.select('.as_headline>.sa_list>._SECTION_HEADLINE>.sa_item_inner>.sa_item_flex>.sa_text>.sa_text_title>strong')
-# print(len(titles))
-# for i in range(len(titles)):
-#     print(i+1, titles[i].text)
 
-first = bs.find('div', class_="as_section_headline").find('div', class_='as_headline')
-lis=bs.find_all('li', class_="sa_item _SECTION_HEADLINE")
+# 1) css selector를 활용
+titles = bs.select('.ct_scroll_wrapper>div>div>ul>li>a')
+titles = bs.select('.as_headline>.sa_list>._SECTION_HEADLINE>.sa_item_inner>.sa_item_flex>.sa_text>.sa_text_title>strong')
+print(len(titles))
+for i in range(len(titles)):
+    print(i+1, titles[i].text)
 
-# print(all.get_text())
-# print(all.get_text().strip())
-for s in lis:
-  temp = str(s.find('strong', class_="sa_text_strong"))
-  start = temp.find('">')+2
-  end = temp.find("</")
-  print(temp[start:end:1])
+# find 찾으면 첫번째 꺼, find_all 복수개를 들고 옴
+# first = bs.find('div', class_="as_section_headline").find('div', class_='as_headline').find('ul', class_='sa_list')
+# lis = first.find_all('li', class_="_SECTION_HEADLINE")
+# for s in lis:
+#   temp = str(s.find('strong', class_="sa_text_strong"))
+#   start = temp.find('">')+2
+#   end = temp.find("</")
+#   print(temp[start:end])
