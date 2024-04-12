@@ -1,7 +1,7 @@
 # raise Exception('강제 예외 발생')
 # raise ValueError
 error_message = """Traceback (most recent call last):
-  File "C:\\workspace\\PycharmProjects\\pythonProject\\Ex01DataAnalysys\\P01_data_get.py", line 1, in <module>
+  File "C:\\workspace\\PycharmProjects\\pythonProject\\Ex01DataAnalysys\\P01_textdata_get.py", line 1, in <module>
     raise Exception('강제 예외 발생')
 Exception: 강제 예외 발생
 """
@@ -20,13 +20,13 @@ data = f.read()
 print(data)
 f.close()
 
-f = open('data.csv', 'r', encoding='utf8')
+f = open('2024-04-11_data.csv', 'r', encoding='utf8')
 data = f.read()
 print(data)
 f.close()
 
 import csv
-f = open('data.csv', 'r', encoding='utf8')
+f = open('2024-04-11_data.csv', 'r', encoding='utf8')
 data = csv.reader(f)
 print(type(data))
 for i in data:
@@ -59,3 +59,47 @@ for i in range(len(titles)):
 #   start = temp.find('">')+2
 #   end = temp.find("</")
 #   print(temp[start:end])
+
+#정규 표현식(Regular Expression)
+a="1,2,3,4,5"
+for i in a:
+  if i != ',': print(i, end=' ')
+print()
+print(a.replace(',', ' '))
+print(a)
+print(a[::2])
+
+b = '''
+  이길동, 01-1111-1111, 11, 0000
+  홍길동, 02-111-2222, 21, 1234
+  박길동, 051-0000-0000, 34, 4567
+'''
+
+print(b.strip())
+print(b.strip().split('\n'))
+for i in b.strip().split('\n'):
+  i = i.split(',')[0].strip()
+  print(i)
+
+# https://m.blog.naver.com/cjinnnn/221329842667
+# 정규표현식 : 특정한 규칙을 가진 문자열을 표현하기 위해 사용하는 형식(주로 검색, 치환에 활용)
+# 1)  . : 1개 문자와 일치
+# 2)  [] : 대괄호안의 문자중 하나 선택
+#   ex) [abc]d -> ad, bd, cd 포함, [a-zA-Z]->알파벳 모두 포함, [가-힣],[0-9]
+# 3)  * : 0개 이상의 문자 포함
+#   ex) a*b -> b, ab, aab, aaaaaaab 등
+# 4)  {m,n} : m회 이상 n회 이하
+#   ex) a{1,3}b -> ab, aab, aaab
+# 5)  그외
+#   ?, +, (), ^ 등 다양한 규칙이 존재함
+
+import re
+a = "1,2,3,4,5"
+pattern = re.compile('[^0-9]')  # ^0-9를 제외한 것
+result = re.sub(pattern, '', a)
+print(result)
+
+pattern = re.compile('[^가-힣]')  # ^0-9를 제외한 것
+result = re.sub(pattern, '', b)
+print(result)
+
