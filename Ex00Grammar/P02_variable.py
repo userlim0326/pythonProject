@@ -4,6 +4,13 @@
 # 3) 특수문자, 공백 안됨
 # 4) 클래스는 Pascal case, 변수나 함수는 Snake case
 # 5) Python에서는 null 대신 None 사용
+'''
+[ 자료형 ]
+숫자 자료형 : int, float, complex
+불 자료형 : True, False
+군집 자료형 : str, list, tuple, dict, set
+동적 자료형 : 입력시 타입이 결정
+'''
 import random
 
 # 변수는 동적 할당(선언 + 초기화)

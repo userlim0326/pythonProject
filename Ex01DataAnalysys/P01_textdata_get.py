@@ -103,3 +103,11 @@ pattern = re.compile('[^가-힣]')  # ^0-9를 제외한 것
 result = re.sub(pattern, '', b)
 print(result)
 
+pattern = re.compile('/breakingnews/section/105/.*"')  # /breakingnews로 시작하는 주소들
+result = pattern.search(str(bs))
+print(result.group())
+
+pattern = re.compile('[a-z:/.]*')  #
+result = pattern.search(result.group())
+print(result.group())
+
