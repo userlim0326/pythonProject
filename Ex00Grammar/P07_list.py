@@ -39,9 +39,9 @@ lists = [
 print(lists, type(lists))
 print(lists[1], lists[0][0])
 
-lists2 = [[0 for j in range(len(lists[0])+1)] for i in range(len(lists))] #새로운 리스트 생성
+# 새로운 리스트 생성
+lists2 = [[0 for j in range(len(lists[0])+1)] for i in range(len(lists))]
 pArr(lists2)
-print(">>", len(lists2), len(lists2[0]))
 
 for i in range(0, len(lists)):
   for j in range(0, len(lists[i]), 1):
@@ -50,7 +50,22 @@ for i in range(0, len(lists)):
       lists2[i][len(lists[0])] += lists[i][j]
   print(end="\n")
 
+lists3 = list()
+for i in range(0, len(lists)):
+  tmpList = list()
+  for j in range(0, len(lists[i]), 1):
+    tmpList.append(lists[i][j]);
+    if j>1:
+      tmpList.append(lists[i][j])
+      tmpList.insert(i,lists[i][j-1] + lists[i][j])
+  lists3.append(tmpList)
+
 print("{0:=^20}".format('결과'))
 pArr(lists2)
+pArr(lists3)
 
 
+listStr = ["Life", "is", "Good", "and", "Happy"]
+print(listStr)
+listStr.reverse(); print(listStr)
+print(listStr.index("Good"))
