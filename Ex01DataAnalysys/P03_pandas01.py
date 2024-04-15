@@ -1,4 +1,5 @@
 import pandas as pd
+
 '''
 행과 열로 이루어진 데이터를 쉽게 다룰 수 있도록 도와 주는
 파이썬의 데이터 분석 전용 외부 모듈
@@ -12,9 +13,9 @@ import pandas as pd
 #       • 파이썬의 딕셔너리 자료형
 #       • Numpy의 Array 자료형도 Series 자료형으로 만들 수있음
 #       • 딕셔너리의 키가 Series의 인덱스가 됨
-sr1 = pd.Series( [ 10, 20, 30, 40], index = [ '다현', '정연', '쯔위', '사나' ] )
-sr2 = pd.Series( [ 50, 60, 70, 80], index = [ '다현', '정연', '쯔위', '사나' ] )
-sr3 = pd.Series( [ 11, 22, 33, 44], index = [ '다현', '사나', '모모', '재남' ])
+sr1 = pd.Series([10, 20, 30, 40], index=['다현', '정연', '쯔위', '사나'])
+sr2 = pd.Series([50, 60, 70, 80], index=['다현', '정연', '쯔위', '사나'])
+sr3 = pd.Series([11, 22, 33, 44], index=['다현', '사나', '모모', '재남'])
 print(sr1, type(sr1))
 print(sr1.index, type(sr1.index))
 
@@ -24,8 +25,11 @@ print(sr12, '\n')
 sr13 = sr1 + sr3
 print(sr13)
 
-a = pd.Series([1,2,3,4])
+a = pd.Series([1, 2, 3, 4])
 print(a, type(a))
+print("a.argmin():",a.argmin()) #최소값의 인덱스를 반환
+print("a.argmax():", a.argmax())#최대값의 인덱스를 반환
+print("a.mean():", a.mean()) #평균을 반환
 
 #   2)DataFrame 자료형
 # • 행과 열로 이루어진 자료형
@@ -33,3 +37,45 @@ print(a, type(a))
 #   (예) Series vs. DataFrame
 # • Series: 인덱스, 값으로만 구성, 1차원 배열 형태의 자료 구조
 # • DataFrame: 행과 열로 구성, 2차원 테이블 형태의 자료 구조
+
+a = pd.Series({
+  'a': [1, 1, 1],
+  'b': [2, 2, 2],
+  'c': [3, 3, 3]
+})
+
+b = pd.DataFrame({
+  'a': [1, 1, 1],
+  'b': [2, 2, 2],
+  'c': [3, 3, 3]
+})
+print(a, type(a));
+print(b, type(b))
+
+a = pd.DataFrame({'a': (1, 2), 'b': 1, 'c': 3})  # 컬럼에 ()가 있으면 각각에 대한 인덱스 생성
+print(a)
+print(a.index);
+print(a.columns)
+a.index = ['x', 'y']
+a.columns = ['i', 'j', 'k']
+print("{0:=^40}".format(''))
+print(a)
+print(a.iloc[0])   # iloc: 행 인덱스로 값을 가져오기
+print(a.loc['x'])  # loc:  행 이름으로 값을 가져오기
+
+a = pd.DataFrame({'a':(1,2,3), 'b':[4,5,6], 'c':[7,8,9]})
+print(a)
+#    a  b  c
+# 0  1  4  7
+# 1  2  5  8
+# 2  3  6  9
+
+print(a.describe()) # DataFrame에서 계산 가능한 값들에 대하여 결과를 간략하게 표시
+print(a.sum()) # default(axis=0)는 열 기준으로 합을 구함.
+print(a.sum(axis=1)) #axis=1은 행 기준으로 합을 구함.
+print(a.prod()) # default(axis=0)는 열 기준으로 곱을 구함.
+print(a.prod(axis=1)) #axis=1은 행 기준으로 곱을 구함.
+print(a.cumsum())  # 누적합에 대하여 연산
+print(a.cumprod()) # 누적곱에 대하여 연산
+print(a.min());print(a.min(axis=1));
+print(a.max());print(a.max(axis=1));
