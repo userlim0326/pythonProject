@@ -95,3 +95,17 @@ print(ord('A'))
 print("'A' == chr(65):", 'A' == chr(65))
 print("'A' == ord('A'):", 'A' == ord('A'))
 
+# python은 상수가 없다. python은 동적 언어이기 때문에 상수에 대한 키워드가 없다.
+from typing import Final
+SIZE:Final = 5
+SIZE = 10
+print(SIZE) # 사용가능. 재할당을 막을 수는 없다.
+
+# class를 만들어서 상수처럼 사용 가능
+import common.constant as const
+
+const.PI = 3.14
+print(const.PI)
+
+# const.PI = 3.141592 # 재할당 할 경우 에러 발생
+# print(const.PI)
