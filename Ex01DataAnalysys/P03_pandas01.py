@@ -15,9 +15,21 @@ import pandas as pd
 sr1 = pd.Series( [ 10, 20, 30, 40], index = [ '다현', '정연', '쯔위', '사나' ] )
 sr2 = pd.Series( [ 50, 60, 70, 80], index = [ '다현', '정연', '쯔위', '사나' ] )
 sr3 = pd.Series( [ 11, 22, 33, 44], index = [ '다현', '사나', '모모', '재남' ])
-print(sr1)
+print(sr1, type(sr1))
+print(sr1.index, type(sr1.index))
+
 sr12 = sr1 + sr2
 print(sr12, '\n')
 
 sr13 = sr1 + sr3
 print(sr13)
+
+a = pd.Series([1,2,3,4])
+print(a, type(a))
+
+#   2)DataFrame 자료형
+# • 행과 열로 이루어진 자료형
+# • Series와 마찬가지로 파이썬의 딕셔너리 자료형 또는 Numpy의 array로도 정의할 수있음
+#   (예) Series vs. DataFrame
+# • Series: 인덱스, 값으로만 구성, 1차원 배열 형태의 자료 구조
+# • DataFrame: 행과 열로 구성, 2차원 테이블 형태의 자료 구조
