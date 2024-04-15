@@ -110,8 +110,8 @@ for i in genre:
 print(result)
 
 import matplotlib.pyplot as plt
-x = np.array(unique_genre).tolist()
-y = result["count"].values.tolist()
+x = np.array(unique_genre).tolist() # List로 변환
+y = result["count"].values.tolist() # List로 변환
 print(x); print(y)
 # plt.barh(x,y)
 plt.barh(x, result["count"].values.tolist(), color='#e35f62')
