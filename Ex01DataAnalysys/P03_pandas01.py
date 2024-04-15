@@ -114,7 +114,7 @@ x = np.array(unique_genre).tolist()
 y = result["count"].values.tolist()
 print(x); print(y)
 # plt.barh(x,y)
-plt.barh(x, result["count"].values.tolist() )
+plt.barh(x, result["count"].values.tolist(), color='#e35f62')
 plt.yticks(x, np.array(unique_genre).tolist())
 plt.show()
 
