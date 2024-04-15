@@ -30,6 +30,7 @@ print(a, type(a))
 print("a.argmin():",a.argmin()) #최소값의 인덱스를 반환
 print("a.argmax():", a.argmax())#최대값의 인덱스를 반환
 print("a.mean():", a.mean()) #평균을 반환
+print("a.unique():", a.unique()); # 중복값을 제외한 유니크한 값 반환
 
 #   2)DataFrame 자료형
 # • 행과 열로 이루어진 자료형
@@ -79,3 +80,50 @@ print(a.cumsum())  # 누적합에 대하여 연산
 print(a.cumprod()) # 누적곱에 대하여 연산
 print(a.min());print(a.min(axis=1));
 print(a.max());print(a.max(axis=1));
+print(a.mean());print(a.mean(axis=1)) # 평균
+print(a.median());print(a.median(axis=1)) # 중간값
+print(a.std());print(a.std(axis=1)) # 중간값
+print(a.var());print(a.var(axis=1)) # 중간값
+
+data = pd.read_csv('movies.csv')
+print(data)
+
+genre = []
+for i in data['genres']:
+  genre.extend(i.split('|'))
+print(len(genre))
+print(genre)
+
+np_genre = pd.Series(genre)
+unique_genre = pd.unique(np_genre.sort_values())
+print(len(unique_genre));print(unique_genre)
+
+import numpy as np
+zero_data = np.zeros(len(unique_genre))
+result = pd.DataFrame(zero_data, index=unique_genre, columns=['count'])
+print(result)
+
+for i in genre:
+  result.loc[i] += 1
+  # print(result.loc[i])
+
+print(result)
+
+import matplotlib.pyplot as plt
+x = np.array(unique_genre).tolist()
+y = result["count"].values.tolist()
+print(x); print(y)
+# plt.barh(x,y)
+plt.barh(x,result["count"].values.tolist() )
+plt.yticks(x,np.array(unique_genre).tolist())
+plt.show()
+
+
+
+
+
+
+
+
+
+
