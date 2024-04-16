@@ -42,7 +42,7 @@ plt.show()
 '''
 
 # 막대그래프
-'''
+
 figure = plt.figure()
 ax = figure.add_subplot(111)
 x = [1, 2, 3, 4]
@@ -51,10 +51,16 @@ y = [2, 4, 6, 8]
 ax.set_xlabel('x')
 ax.set_ylabel('y')
 ax.set_title('Bar graph')
-ax.bar(x,y, label="y", color="k")
+bar = ax.bar(x,y, label="y", color="pink")
 ax.legend()
+ax.set_ylim(0,10)
+# 숫자 넣는 부분
+for rect in bar:
+    height = rect.get_height()
+    plt.text(rect.get_x() + rect.get_width()/2.0, height, '%.1f' % height,
+             ha='center', va='top', size = 12)
+
 plt.show()
-'''
 
 # 복합 축(bar and plot)
 '''
