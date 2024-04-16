@@ -61,12 +61,11 @@ ax.set_title('Bar graph')
 bar = ax.bar(x,y, label="y", color="pink")
 ax.legend()
 ax.set_ylim(0,10)
-# 숫자 넣는 부분
+# 세로에서 숫자 넣기
 for rect in bar:
     height = rect.get_height()
     plt.text(rect.get_x() + rect.get_width()/2.0, height, '%.1f' % height,
              ha='center', va='bottom', size = 12)
-
 plt.show()
 '''
 
