@@ -9,6 +9,7 @@ SIZE = 5  # 원본 크기
 value = 1
 myAry1 = np.arange(value, value+(SIZE*SIZE), 1)
 myAry1 = myAry1.reshape(SIZE, SIZE)
+print(myAry1)
 
 # 2차원 넘파이 배열 만드는 방법 1
 npArr = np.random.randint(0, 256, size=(const.SIZE, const.SIZE))
@@ -67,7 +68,8 @@ print('* zeros(5)--> ', numpyAry6)
 numpyAry7 = np.empty(6)
 print('* empty(6)--> ', numpyAry7)
 
-numpyAry8 = np.full(5, 33)
+numpyAry8 = np.full(5, 33)      # 1차원
+numpyAry8 = np.full((5,3), 33)  # 2차원
 print('* full(5, 33) --> ', numpyAry8)
 
 numpyAry9 = np.identity(5)

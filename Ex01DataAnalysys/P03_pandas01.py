@@ -82,8 +82,8 @@ print(a.min());print(a.min(axis=1));
 print(a.max());print(a.max(axis=1));
 print(a.mean());print(a.mean(axis=1)) # 평균
 print(a.median());print(a.median(axis=1)) # 중간값
-print(a.std());print(a.std(axis=1)) # 중간값
-print(a.var());print(a.var(axis=1)) # 중간값
+print(a.std());print(a.std(axis=1)) # 표준편차
+print(a.var());print(a.var(axis=1)) # 분산
 
 data = pd.read_csv('movies.csv')
 print(data)
@@ -92,7 +92,7 @@ genre = []
 for i in data['genres']:
   genre.extend(i.split('|'))
 print(len(genre))
-print(genre)
+# print(genre)
 
 np_genre = pd.Series(genre)
 unique_genre = pd.unique(np_genre.sort_values())
@@ -113,7 +113,8 @@ import matplotlib.pyplot as plt
 x = np.array(unique_genre).tolist() # List로 변환
 y = result["count"].values.tolist() # List로 변환
 print(x); print(y)
-# plt.barh(x,y)
+# plt.bar(x,y) # 수직 바 그래프
+# plt.barh(x,y) # 수평 바 그래프
 plt.barh(x, result["count"].values.tolist(), color='#e35f62')
 plt.yticks(x, np.array(unique_genre).tolist())
 plt.show()
