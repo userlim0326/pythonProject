@@ -8,13 +8,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 '''
-x = [1, 2, 3, 4]
-y = [2, 3, 4, 5]
-# plt.plot(x,y);plt.show()
-# plt.bar(x,y);plt.show()
-'''
-
-'''
 figure = plt.figure()
 #add_subplot([총 행의 수][총 열의 수][subplot의 인덱스(1부터 시작)])
 # axes1 = figure.add_subplot(121)  # 1행 2열에서 1열
@@ -23,13 +16,12 @@ axes1 = figure.add_subplot(221)  # 2행 2열에서 1열
 axes2 = figure.add_subplot(222)  # 2행 2열에서 2열
 axes3 = figure.add_subplot(223)  # 2행 2열에서 3열
 axes4 = figure.add_subplot(224)  # 2행 2열에서 4열
-# plt.show()
+plt.show()
 '''
-
-figure = plt.figure()
 
 # 직선, 꺽은 그래프
 '''
+figure = plt.figure()
 axes = figure.add_subplot()
 x = [1,2,3,4]
 y = [2,4,6,8]
@@ -40,49 +32,58 @@ x = [1,2,3,4]
 y = [2,4,6,8]
 x2 = [1,2,3,4]
 y2 = [4,1,3,6]
-axes.plot(x,y, color="red", linestyle='dashed', marker="v")
-axes.plot(x2, y2, color="k", linestyle="dotted", marker="o")
+axes.plot(x,y, color="red", linestyle='dashed', marker="v", label="x")
+axes.plot(x2, y2, color="k", linestyle="dotted", marker="o", label="y")
+axes.legend() # plot 속성의 label을 가지고 생성
+axes.set_title("x and y")
+axes.set_ylabel("y")
+axes.set_xlabel("x")
+plt.show()
 '''
 
-# 막대그래프 중복 방지
+# 막대그래프
+'''
+figure = plt.figure()
+ax = figure.add_subplot(111)
+x = [1, 2, 3, 4]
+y = [2, 4, 6, 8]
+
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_title('Bar graph')
+ax.bar(x,y, label="y", color="k")
+ax.legend()
+plt.show()
+'''
+
+# 복합 축(bar and plot)
+'''
+figure = plt.figure()
 axes = figure.add_subplot(111)
+axes2 = axes.twinx()
+
 x = [1, 2, 3, 4]
 y = [2, 4, 6, 8]
 
 x2 = [1, 2, 3, 4]
 y2 = [4, 4, 3, 6]
-tmp = x+x2
-np_tmp = np.array(tmp)
-np_uq = np.unique(np_tmp)
-print(np.sort(np_uq))
-np_sort = np.sort(np_uq)
-xlabel = np.arange(len(np_sort))
-print(xlabel)
-width = 0.35
-fig, ax = plt.subplots()
 
-rect1 = ax.bar(xlabel - width / 2, y, width, label="x")
-rect2 = ax.bar(xlabel + width / 2, y2, width, label="x2")
+axes.bar(x,y,color='green', label='bar')
+axes2.plot(x2,y2,color='r', label='plot')
 
-ax.set_ylabel('x, x2')
-ax.set_title('x, x2')
-ax.set_xticks(x)
-ax.set_xticklabels(np_uq.tolist())
-ax.legend()
-
-
-def autolabel(rects):
-  """Attach a text label above each bar in *rects*, displaying its height."""
-  for rect in rects:
-    height = rect.get_height()
-    ax.annotate('{}'.format(height),
-                xy=(rect.get_x() + rect.get_width() / 2, height),
-                xytext=(0, 3),  # 3 points vertical offset
-                textcoords="offset points",
-                ha='center', va='bottom')
-
-autolabel(rect1)
-autolabel(rect2)
-
-fig.tight_layout()
+axes.legend()
+axes2.legend(loc=1)
 plt.show()
+'''
+
+
+
+
+
+
+
+
+
+
+
+
