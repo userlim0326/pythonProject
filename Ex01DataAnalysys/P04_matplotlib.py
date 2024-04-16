@@ -5,7 +5,14 @@
 axe는 축, 회전축
 '''
 import matplotlib.pyplot as plt
+import matplotlib.image as img
 import numpy as np
+
+# 한글 지원
+from matplotlib import font_manager, rc
+font_path = "C:\\Windows\\Fonts\\HANBaekM.ttf"
+font = font_manager.FontProperties(fname=font_path).get_name()
+rc('font', family=font)
 
 '''
 figure = plt.figure()
@@ -42,7 +49,7 @@ plt.show()
 '''
 
 # 막대그래프
-
+'''
 figure = plt.figure()
 ax = figure.add_subplot(111)
 x = [1, 2, 3, 4]
@@ -58,9 +65,10 @@ ax.set_ylim(0,10)
 for rect in bar:
     height = rect.get_height()
     plt.text(rect.get_x() + rect.get_width()/2.0, height, '%.1f' % height,
-             ha='center', va='top', size = 12)
+             ha='center', va='bottom', size = 12)
 
 plt.show()
+'''
 
 # 복합 축(bar and plot)
 '''
@@ -82,12 +90,56 @@ axes2.legend(loc=1)
 plt.show()
 '''
 
+# Scatter (산점도) graph
+'''
+figure = plt.figure()
+axes = figure.add_subplot(111)
+x = [1, 2, 3, 4]
+y = [2, 4, 6, 8]
+x2 = [1, 1, 3, 4]
+y2 = [6, 2, 4, 6]
 
+axes.scatter(x,y)
+axes.scatter(x2,y2)
+plt.show()
+'''
 
+# Pie (원) graph
+'''
+figure = plt.figure()
+axes = figure.add_subplot(111)
+ratio = [1,1,2,3]
+label = ['하나','b','c','d']
+# ratio = [34,32, 16, 18]
+# label = ['Apple', 'Banana', 'Melon', 'Grapes']
+axes.pie(ratio, labels=label, autopct='%.1f%%')
+plt.savefig('pie_graph')
+plt.show()
+'''
 
+'''
+# 이미지 파일을 읽어서 출력하기
+image = img.imread('pie_graph.png') # 이미지 불러옴
+plt.imshow(image) # 이미지 그래프 설정
+plt.show() # 그래프 출력
+'''
 
-
-
+# Wordcloud
+import wordcloud
+file = open('노무현_한·일관계에 대한 특별 담화문.txt', 'r', encoding='utf8')
+data = file.read()
+data = data.replace('\n','')
+data = data.replace('일본이','')
+data = data.replace('대한','')
+data = data.replace('일본의','')
+data = data.replace('일본은','')
+data = data.replace('일본','')
+data = data.replace('것입니다.','')
+wc = wordcloud.WordCloud(font_path='C:\\Windows\\Fonts\\HANBaekM.ttf', background_color='white',
+                         stopwords=['있는', '우리는', '한일', '결코'])
+wc.generate_from_text(data)
+wc.to_image()
+wc.to_file('Roh.jpg')
 
 
 
